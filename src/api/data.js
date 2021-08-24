@@ -22,3 +22,11 @@ export async function register(email, password, repeatPassword) {
 
     return result;
 }
+
+export async function logout() {
+    const result = await api.get(host + '/users/logout');
+
+    sessionStorage.removeItem('emial');
+    sessionStorage.removeItem('authToken');
+    sessionStorage.removeItem('userId');
+}
