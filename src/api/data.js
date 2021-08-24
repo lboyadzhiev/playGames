@@ -30,3 +30,27 @@ export async function logout() {
     sessionStorage.removeItem('authToken');
     sessionStorage.removeItem('userId');
 }
+
+export async function getItems() {
+    return await api.get(host + '/data/games?sortBy=_createdOn%20desc');
+}
+
+export async function getNewItems() {
+    return await api.get(host + '/data/games?sortBy=_createdOn%20desc&distinct=category');
+}
+
+export async function getItemById(id) {
+    return await api.get(host + '/data/games/' + id);
+}
+
+export async function createItems(data) {
+    return await api.post(host + '/data/games', data);
+}
+
+export async function editItem(id, data) {
+    return await api.put(host + '/data/games/' + id, data);
+}
+
+export async function deleteItem(id) {
+    return await api.del(host + '/data/games/' + id);
+}
