@@ -33,3 +33,11 @@ export function setUserNav() {
         document.getElementById('guest').style.display = 'block';
     }
 }
+
+export function renderContent(ctx, next) {
+    const main = document.getElementById('main-content');
+    ctx.render = (content) => render(content, main);
+    ctx.setUserNav = setUserNav();
+
+    next();
+}
